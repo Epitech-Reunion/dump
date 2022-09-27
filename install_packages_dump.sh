@@ -9,7 +9,7 @@ if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 1>&2
    exit 1
 fi
-cat /etc/fedora-release | grep "${FEDORA_RELEASE}"
+grep "${FEDORA_RELEASE}" /etc/fedora-release
 if [[ $? -ne 0 ]]; then
     echo "This script must be run onto a ${FEDORA_RELEASE}";
     exit 1
