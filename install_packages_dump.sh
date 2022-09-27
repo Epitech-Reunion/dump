@@ -3,6 +3,12 @@ RELEASE_NUM="36"
 
 FEDORA_RELEASE="Fedora release ${RELEASE_NUM}"
 
+DNF_ERRORS=0
+OTHER_ERRORS=0
+
+set -e
+trap 'echo "DNF_ERRORS:${DNF_ERRORS},OTHER_ERRORS:${OTHER_ERRORS}"' EXIT
+
 clear
 echo "INSTALLING PACKAGES FOR EPITECH'S DUMP"
 if [[ $EUID -ne 0 ]]; then
@@ -27,7 +33,6 @@ dnf -y install dnf-plugins-core && dnf -y install https://download1.rpmfusion.or
 #Google Chrome
 dnf -y install fedora-workstation-repositories
 dnf config-manager --set-enabled google-chrome
-
 
 dnf upgrade -y
 
@@ -139,7 +144,7 @@ packages_list=(boost-devel.x86_64
 dnf -y install ${packages_list[@]}
 installed=$(dnf list installed | sed 1d | awk '{print $1}')
 for package in ${packages_list[@]}; do
-	grep $package <<< $installed || echo "${package} is not installed"
+	grep $package <<< $installed || echo "WARNING:${package} is not installed" >&2 && ((DNF_ERRORS = DNF_ERRORS + 1))
 done
 
 # Criterion
@@ -149,6 +154,10 @@ cp -r criterion-2.4.0/* /usr/local/
 echo "/usr/local/lib" > /etc/ld.so.conf.d/usr-local.conf
 ldconfig
 rm -rf criterion-2.4.0.tar.xz criterion-2.4.0/
+
+# Test criterion
+tmp=$(mktemp)
+(echo -e '#include <criterion/criterion.h>\nTest(x, y){cr_assert(42);}' | cc -o ${tmp} -lcriterion -xc - &>/dev/null && ${tmp} -q) || echo "WARNING:criterion is not installed properly" >&2 && ((OTHER_ERRORS = OTHER_ERRORS + 1))
 
 # Sbt
 curl -sSL "https://github.com/sbt/sbt/releases/download/v1.3.13/sbt-1.3.13.tgz" | tar xz
