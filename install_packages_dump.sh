@@ -144,7 +144,7 @@ packages_list=(boost-devel.x86_64
 dnf -y install ${packages_list[@]}
 installed=$(dnf list installed | sed 1d | awk '{print $1}')
 for package in ${packages_list[@]}; do
-	grep $package <<< $installed || echo "WARNING:${package} is not installed" >&2 && ((DNF_ERRORS = DNF_ERRORS + 1))
+	grep -x $package <<< $installed || (echo "WARNING:${package} is not installed" >&2; ((DNF_ERRORS = DNF_ERRORS + 1)))
 done
 
 # Criterion
