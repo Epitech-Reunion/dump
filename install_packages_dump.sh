@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-FEDORA_RELEASE="Fedora release 36"
+RELEASE_NUM="36"
+
+FEDORA_RELEASE="Fedora release ${RELEASE_NUM}"
 
 clear
 echo "INSTALLING PACKAGES FOR EPITECH'S DUMP"
@@ -129,6 +131,10 @@ packages_list=(boost-devel.x86_64
                teams.x86_64)
 
 dnf -y install ${packages_list[@]}
+installed=$(dnf list installed | sed 1d | awk '{print $1}')
+for package in ${packages_list[@]}; do
+	grep $package <<< $installed || echo "${package} is not installed"
+done
 
 # Criterion
 curl -sSL "https://github.com/Snaipe/Criterion/releases/download/v2.4.0/criterion-2.4.0-linux-x86_64.tar.xz" -o criterion-2.4.0.tar.xz
