@@ -170,3 +170,6 @@ cd vim-epitech
 git checkout ec936f2a49ca673901d56598e141932fd309ddac
 ./install.sh
 cd .. && rm -rf vim-epitech
+
+# User group -> video
+gpasswd -a $(id -nu 1000) video
