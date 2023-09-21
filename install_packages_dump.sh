@@ -18,7 +18,6 @@ read
 #Remove annoying beeeeeeps (pcspkr module)
 echo blacklist pcspkr | tee -a /etc/modprobe.d/blacklist-pcspkr.conf
 
-rpm --import https://packages.microsoft.com/keys/microsoft.asc
 dnf -y install dnf-plugins-core && dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 #Google Chrome
