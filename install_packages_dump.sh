@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-FEDORA_RELEASE="Fedora release 36"
+FEDORA_RELEASE="Fedora release 38"
 
 clear
 echo "INSTALLING PACKAGES FOR EPITECH'S DUMP"
