@@ -164,7 +164,7 @@ StartupWMClass=crx_ocdlmjhbenodhlknglojajgokahchlkk
 EOF
 
 #Discord
-curl -sSL https://discord.com/api/download?platform=linux&format=tar.gz -o discord.tar.gz
+curl -sSL "https://discord.com/api/download?platform=linux&format=tar.gz" -o discord.tar.gz
 tar xf discord.tar.gz
 cp -r Discord/ /opt
 cat << EOF > /usr/share/applications/discord.desktop
