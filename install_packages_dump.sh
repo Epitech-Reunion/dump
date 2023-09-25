@@ -44,7 +44,7 @@ packages_list=(boost-devel.x86_64
                glibc.x86_64
                glibc-devel.x86_64
                glibc-locale-source.x86_64
-               google-chrome-stable
+               google-chrome-stable.x86_64
                gmp-devel.x86_64
                ksh.x86_64
                elfutils-libelf-devel.x86_64
