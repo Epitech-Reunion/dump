@@ -133,50 +133,6 @@ packages_list=(boost-devel.x86_64
 
 dnf -y install ${packages_list[@]}
 
-GOOGLE_CHROME_PATH=$(which google-chrome)
-# Teams PWA
-cat << EOF > /usr/share/applications/ms-teams.desktop                                                          
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Microsoft Teams
-Exec=$GOOGLE_CHROME_PATH --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
-Icon=chrome-cifhbcnohmdccbgoicgdjpfamggdegmo-Default
-StartupWMClass=crx_cifhbcnohmdccbgoicgdjpfamggdegmo
-Comment=
-Path=
-StartupNotify=false
-EOF
-
-# MS365 PWA
-cat << EOF > /usr/share/applications/ms-365.desktop
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Microsoft 365
-Exec=$GOOGLE_CHROME_PATH --profile-directory=Default --app-id=ocdlmjhbenodhlknglojajgokahchlkk
-Icon=chrome-ocdlmjhbenodhlknglojajgokahchlkk-Default
-StartupWMClass=crx_ocdlmjhbenodhlknglojajgokahchlkk
-EOF
-
-#Discord
-curl -sSL "https://discord.com/api/download?platform=linux&format=tar.gz" -o discord.tar.gz
-tar xf discord.tar.gz
-cp -r Discord/ /opt
-cat << EOF > /usr/share/applications/discord.desktop
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Discord
-Exec=/opt/Discord/Discord
-Icon=/opt/Discord/discord.png
-EOF
 
 # Criterion
 curl -sSL "https://github.com/Snaipe/Criterion/releases/download/v2.4.0/criterion-2.4.0-linux-x86_64.tar.xz" -o criterion-2.4.0.tar.xz
