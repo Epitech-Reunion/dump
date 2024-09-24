@@ -39,6 +39,7 @@ packages_list=(
     build-essential
     ca-certificates-java
     cabal-install
+    curl
     cargo
     clang
     clang-tools
