@@ -18,11 +18,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-cat /etc/issue | ( grep "Ubuntu 23.10\|Ubuntu 24.04" )
-if [[ $? -ne 0 ]]; then
-    echo "This script must be run onto an Ubuntu 23.10 or 24.04";
-    exit 1
-fi
+
 if [[ $forceflag == false ]]; then
     echo "Press ENTER to continue..."
     read
@@ -153,13 +149,6 @@ packages_list=(
 export DEBIAN_FRONTEND=noninteractive
 apt -y install ${packages_list[@]}
 
-## Microsoft teams
-
-snap install teams-for-linux
-
-## Bun
-
-npm install -g bun
 
 # Criterion
 curl -sSL "https://github.com/Snaipe/Criterion/releases/download/v2.4.2/criterion-2.4.2-linux-x86_64.tar.xz" -o criterion-2.4.2.tar.xz
