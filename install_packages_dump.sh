@@ -129,7 +129,6 @@ packages_list=(
     rustc
     strace
     sudo
-    systemd-dev
     tar
     tcpdump
     tcsh
