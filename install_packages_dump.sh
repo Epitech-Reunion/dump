@@ -143,6 +143,7 @@ packages_list=(
     x264
     zip
     zsh
+    systemd-dev
 )
 
 export DEBIAN_FRONTEND=noninteractive
