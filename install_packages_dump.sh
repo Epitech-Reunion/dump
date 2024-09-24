@@ -27,7 +27,11 @@ fi
 add-apt-repository -y -s universe
 apt update
 apt upgrade -y
-yes | do-release-upgrade || reboot
+
+
+echo "INSTALLING GOOGLE CHROME...."
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt install -y ./google-chrome-stable_current_amd64.deb && rm -fr google-chrome-stable_current_amd64.deb
+
 
 
 echo "wireshark-common wireshark-common/install-setuid boolean true" | debconf-set-selections
