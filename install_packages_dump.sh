@@ -27,6 +27,8 @@ fi
 add-apt-repository -y -s universe
 apt update
 apt upgrade -y
+yes | do-release-upgrade || reboot
+
 
 echo "wireshark-common wireshark-common/install-setuid boolean true" | debconf-set-selections
 
