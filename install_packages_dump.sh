@@ -65,7 +65,6 @@ packages_list=(
     libc-devtools
     libc6
     libc6-dbg
-    libc6-prof
     libcsfml-dev
     libcsfml-doc
     libcunit1
